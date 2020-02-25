@@ -16,6 +16,9 @@ read endid
 echo "Enter name you would like for VM's. (Will clone as <Name><VM-ID>)"
 read name
 
+echo "Enter name of pool to add vm to."
+read pool
+
 echo ""
 echo $curid
 echo $startid
@@ -29,8 +32,8 @@ end=$((endid+1))
 
 while [ $startid -lt $end ]
 do
-	#qm clone <Current_VM_ID> <New_VM_ID> --name <New_VM_Name>
-	qm clone $curid $startid --name $name$startid
+	#qm clone <Current_VM_ID> <New_VM_ID> --name <New_VM_Name> --pool <Pool_Name>
+	qm clone $curid $startid --name $name$startid --pool $pool
 
 	echo ""
 	echo $startid " done."
